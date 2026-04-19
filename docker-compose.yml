@@ -1,0 +1,51 @@
+services:
+  # PHP web alkalmazás
+  spar-web:
+    build:
+      context: ./web
+    container_name: spar-web-container
+    restart: unless-stopped
+    volumes:
+      - ./web/src:/var/www/html
+    # A webes felületet a http://localhost:8000 címen éred el
+    ports:
+      - "8000:80"
+    depends_on:
+      - spar-db
+    networks:
+      - spar-network
+
+  # MySQL Adatbázis
+  spar-db:
+    image: mysql:8.0
+    container_name: spar-db-container
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spar_belso_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./spar_db_data:/var/lib/mysql
+    networks:
+      - spar-network
+
+  # phpMyAdmin - Adatbázis kezelő felület
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: spar-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      # Itt adjuk meg, melyik adatbázis szerverhez csatlakozzon (a szerviz nevét használjuk)
+      PMA_HOST: spar-db
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - spar-db
+    networks:
+      - spar-network
+
+networks:
+  spar-network:
+    driver: bridge
