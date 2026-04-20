@@ -1,3 +1,24 @@
+<?php
+require_once("db.php");
+require_once(__DIR__ . "/../auth.php");
+
+csakBejelentekzve();
+
+/*$userId = $_SESSION["user_id"];
+$username = $_SESSION["username"];
+
+$lekerdezes = $conn->prepare(
+    "SELECT id, task, category, priority, is_done, created_at 
+    FROM tasks 
+    WHERE user_id = ? ORDER BY is_done ASC, id DESC"
+);
+
+$lekerdezes->bind_param("i", $userId);
+$lekerdezes->execute();
+
+$result = $lekerdezes->get_result();*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
