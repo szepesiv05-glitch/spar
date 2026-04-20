@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($user && password_verify($password, $user["password"])) {
         $_SESSION["user_id"] = $user["id"];
         $_SESSION["username"] = $user["username"];
+        header("Location: index.php");
+        exit;
     }
-
-    header("Location: index.php");
-    exit;
-} else {
-    $hiba = "Hibás adatok";
-}
+    else {
+        $hiba = "Hibás felhasználónév vagy jelszó";
+    }
+} 
 
 ?>
 
