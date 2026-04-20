@@ -3,7 +3,7 @@ $conn = new mysqli(
     hostname:"127.0.0.1", 
     username: "root",
     password: "root",
-    database: "spar_db_data"
+    database: "spar_belso_db"
 );
 
 if($conn->connect_error) {
@@ -11,5 +11,4 @@ if($conn->connect_error) {
 }
 
 $conn -> set_charset("utf8mb4");
-
 ?>
