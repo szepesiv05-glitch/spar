@@ -4,7 +4,7 @@ require_once(__DIR__ . "/../auth.php");
 
 csakBejelentekzve();
 
-/*$userId = $_SESSION["user_id"];
+$userId = $_SESSION["user_id"];
 $username = $_SESSION["username"];
 
 $lekerdezes = $conn->prepare(
@@ -16,7 +16,7 @@ $lekerdezes = $conn->prepare(
 $lekerdezes->bind_param("i", $userId);
 $lekerdezes->execute();
 
-$result = $lekerdezes->get_result();*/
+$result = $lekerdezes->get_result();
 ?>
 
 <!DOCTYPE html>
