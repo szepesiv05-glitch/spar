@@ -1,6 +1,6 @@
 <?php
-require_once("db.php");
-require_once(__DIR__ . "/../auth.php");
+require_once(__DIR__ . "/../includes/db.php");
+require_once(__DIR__ . "/../includes/auth.php");
 
 $hiba = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
