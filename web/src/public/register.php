@@ -19,6 +19,7 @@ if ($username == "" || $password == "" || $email == "" || $fullname == "") {
 
     if($lekerdezes -> execute()) {
         $siker = "Sikeres regisztráció";
+        header("Location: login.php");
     } else {
         $hiba = "A felhasználó már foglalt";
     }
