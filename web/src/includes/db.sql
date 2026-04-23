@@ -9,7 +9,7 @@ CREATE TABLE `users` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
--- 2. Nyitvatartás tábla (Hét napjai alapján)
+-- 2. Nyitvatartás tábla
 CREATE TABLE `openhours` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `day_of_week` TINYINT NOT NULL COMMENT '1: Hétfő, 7: Vasárnap',
@@ -19,7 +19,7 @@ CREATE TABLE `openhours` (
     UNIQUE(`day_of_week`)
 ) ENGINE=InnoDB;
 
--- 3. Ünnepnapok tábla (Speciális dátumok, amikor zárva van a bolt)
+-- 3. Ünnepnapok tábla
 CREATE TABLE `holidays` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `holiday_date` DATE NOT NULL UNIQUE,
