@@ -18,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if($user && password_verify($password, $user["password"])) {
         $_SESSION["user_id"] = $user["id"];
         $_SESSION["username"] = $user["username"];
+        $_SESSION["full_name"] = $user["full_name"];
+        $_SESSION["role"] = $user["role"];
+
         header("Location: index.php");
         exit;
     }
@@ -25,14 +28,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hiba = "Hibás felhasználónév vagy jelszó";
     }
 } 
-
 ?>
 
 <h1>Bejelentkezés</h1>
 <form method="post">
-    <label>Felhaszálónev: <input type="text" name="username"></label>
-    <label>Jelszó: <input type="password" name="password"></label>
+    <div>
+        <label>Felhasználónév:</label>
+        <input type="text" name="username" required>
+    </div>
+    <div>
+        <label>Jelszó:</label>
+        <input type="password" name="password" required>
+    </div>
     <button type="submit">Bejelentkezés</button>
 </form>
+
+<p>Még nincs fiókod? <a href="register.php">Regisztráció</a></p>
 <p style="color: red"><?= $hiba ?></p>
-<a href="register.php">Regisztrácio</a>
