@@ -40,7 +40,7 @@ CREATE TABLE `shifts` (
     FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Alapadatok az openhours táblához
+-- Alapadatok a nyitvatartás táblához
 INSERT INTO `openhours` (`day_of_week`, `opening_time`, `closing_time`, `is_closed`) VALUES
 (1, '06:30:00', '21:00:00', FALSE),
 (2, '06:30:00', '21:00:00', FALSE),
