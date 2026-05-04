@@ -1,4 +1,4 @@
--- 1. Felhasználók tábla
+-- Felhasználók tábla
 CREATE TABLE `users` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(50) NOT NULL UNIQUE,
@@ -9,7 +9,7 @@ CREATE TABLE `users` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
--- 2. Nyitvatartás tábla
+-- Nyitvatartás tábla
 CREATE TABLE `openhours` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `day_of_week` TINYINT NOT NULL COMMENT '1: Hétfő, 7: Vasárnap',
@@ -19,7 +19,7 @@ CREATE TABLE `openhours` (
     UNIQUE(`day_of_week`)
 ) ENGINE=InnoDB;
 
--- 3. Ünnepnapok tábla
+-- Ünnepnapok tábla
 CREATE TABLE `holidays` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `holiday_date` DATE NOT NULL UNIQUE,
@@ -27,7 +27,7 @@ CREATE TABLE `holidays` (
     `is_workday` BOOLEAN DEFAULT FALSE COMMENT 'Ha esetleg ünnepnapi pótlékkal dolgoznak'
 ) ENGINE=InnoDB;
 
--- 4. Műszakok tábla
+-- Műszakok tábla
 CREATE TABLE `shifts` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `user_id` INT NOT NULL,
