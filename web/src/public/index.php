@@ -71,7 +71,7 @@ while ($row = $result->fetch_assoc()) {
             $is_today = ($date_string == date('Y-m-d'));
             
             $day_shifts = isset($shifts[$date_string]) ? $shifts[$date_string] : [];
-            $max_slots = 5; // Hány oszlopnyi hely legyen
+            $slots = 5; // Hány oszlopnyi hely legyen
         ?>
             <tr class="<?= $is_weekend ? 'weekend' : '' ?> <?= $is_today ? 'today' : '' ?>">
                 <td><?= $d ?>.</td>
@@ -79,7 +79,7 @@ while ($row = $result->fetch_assoc()) {
                 
                 <?php 
                 // Kilistázzuk a már meglévő műszakokat
-                for ($i = 0; $i < $max_slots; $i++): ?>
+                for ($i = 0; $i < $slots; $i++): ?>
                     <td>
                         <?php if (isset($day_shifts[$i])): $s = $day_shifts[$i]; ?>
                             <div class="shift-slot <?= $s['status'] ?>">
