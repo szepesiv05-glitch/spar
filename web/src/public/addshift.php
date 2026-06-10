@@ -5,7 +5,6 @@ require_once(__DIR__ . "/../includes/auth.php");
 csakBejelentekzve();
 
 $hiba = "";
-$siker = "";
 $date = $_GET['date'] ?? $_POST['date'] ?? date('Y-m-d');
 
 // Mentés feldolgozása
