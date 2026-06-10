@@ -85,7 +85,7 @@ while ($row = $result->fetch_assoc()) {
                                 <?= substr($s['start_time'], 0, 5) ?> - <?= substr($s['end_time'], 0, 5) ?>
                             </div>
                         <?php else: ?>
-                            <a href="add_shift.php?date=<?= $date_string ?>" class="add-link">+ Jelentkezés</a>
+                            <a href="addshift.php?date=<?= $date_string ?>" class="add-link">+ Jelentkezés</a>
                         <?php endif; ?>
                     </td>
                 <?php endfor; ?>
