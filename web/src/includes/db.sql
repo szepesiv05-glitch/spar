@@ -24,7 +24,6 @@ CREATE TABLE `holidays` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `holiday_date` DATE NOT NULL UNIQUE,
     `description` VARCHAR(255),
-    `is_workday` BOOLEAN DEFAULT FALSE COMMENT 'Ha esetleg ünnepnapi pótlékkal dolgoznak'
 ) ENGINE=InnoDB;
 
 -- Műszakok tábla
@@ -49,3 +48,18 @@ INSERT INTO `openhours` (`day_of_week`, `opening_time`, `closing_time`, `is_clos
 (5, '06:30:00', '21:00:00', FALSE),
 (6, '06:30:00', '21:00:00', FALSE),
 (7, '07:00:00', '20:00:00', FALSE);
+
+INSERT INTO holidays (holiday_date, description) VALUES
+('2026-01-01', 'Újév'),
+('2026-03-15', 'Nemzeti ünnep'),
+('2026-04-03', 'Nagypéntek'),
+('2026-04-05', 'Húsvétvasárnap'),
+('2026-04-06', 'Húsvéthétfő'),
+('2026-05-01', 'Munka ünnepe'),
+('2026-05-24', 'Pünkösdvasárnap'),
+('2026-05-25', 'Pünkösdhétfő'),
+('2026-08-20', 'Államalapítás ünnepe'),
+('2026-10-23', 'Nemzeti ünnep'),
+('2026-11-01', 'Mindenszentek'),
+('2026-12-25', 'Karácsony első napja'),
+('2026-12-26', 'Karácsony második napja');
