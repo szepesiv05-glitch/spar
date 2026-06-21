@@ -5,10 +5,13 @@ require_once(__DIR__ . "/../includes/auth.php");
 csakBejelentekzve();
 
 $hiba = "";
+
+// dátum meghatározása
 $date = $_GET['date'] ?? $_POST['date'] ?? date('Y-m-d');
 
 // Mentés feldolgozása
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // adatok átvétele a formból
     $user_id = $_SESSION["user_id"];
     $start_time = $_POST["start_time"];
     $end_time = $_POST["end_time"];
@@ -18,10 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hiba = "A befejezés időpontja nem lehet korábban, mint a kezdés!";
     } else {
         // Mentés az adatbázisba 'pending' státusszal
-        $timetable = $conn->prepare("INSERT INTO shifts (user_id, date, start_time, end_time, status) VALUES (?, ?, ?, ?, 'pending')");
-        $timetable->bind_param("isss", $user_id, $date, $start_time, $end_time);
+        $stmt = $conn->prepare("INSERT INTO shifts (user_id, date, start_time, end_time, status) VALUES (?, ?, ?, ?, 'pending')");
+        $stmt->bind_param("isss", $user_id, $date, $start_time, $end_time);
 
-        if ($timetable->execute()) {
+        if ($stmt->execute()) {
             // Sikeres mentés után visszaugrunk a főoldalra az adott hónaphoz
             $month = substr($date, 0, 7);
             header("Location: index.php?month=$month");
@@ -52,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <div class="card">
-    <h2>Műszak rögzítése</h2>
+    <h2>Műszak hozzáadása</h2>
     <p>Dátum: <strong><?= htmlspecialchars($date) ?></strong></p>
 
     <?php if ($hiba): ?>
